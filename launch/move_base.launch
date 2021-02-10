@@ -1,0 +1,18 @@
+<launch>
+  <arg name="pub_base_twist_topic_name" default="/hsrb/command_velocity" />
+  <arg name="pub_movebase_simplegoal_topic_name" default="/move_base_simple/goal" />
+
+  <node pkg="move_base" type="move_base" name="move_base" output="screen">
+    <remap from="/cmd_vel" to="$(arg pub_base_twist_topic_name)"/>
+    <param name="base_global_planner" value="navfn/NavfnROS"/>
+    <param name="pub_base_twist_topic_name" type="string" value="$(arg pub_base_twist_topic_name)" />
+    <param name="pub_movebase_simplegoal_topic_name" type="string" value="$(arg pub_movebase_simplegoal_topic_name)" />
+    <rosparam file="$(find oit_sigverse_ros)/config/move_base.yaml" command="load"/>
+    <rosparam file="$(find oit_sigverse_ros)/config/costmap_common.yaml" command="load" ns="global_costmap"/>
+    <rosparam file="$(find oit_sigverse_ros)/config/costmap_common.yaml" command="load" ns="local_costmap"/>
+    <rosparam file="$(find oit_sigverse_ros)/config/costmap_local.yaml" command="load"/>
+    <rosparam file="$(find oit_sigverse_ros)/config/costmap_global.yaml" command="load"/>
+    <rosparam file="$(find oit_sigverse_ros)/config/planner_local.yaml" command="load"/>
+    <rosparam file="$(find oit_sigverse_ros)/config/planner_global.yaml" command="load"/>
+  </node>
+</launch>

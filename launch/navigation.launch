@@ -1,0 +1,13 @@
+<launch>
+  <arg name="map_dir" default="$(find oit_pbl_maps)/maps"/>
+  <arg name="map_name" default="LayoutA"/>
+  <arg name="map_path" default="$(arg map_dir)/$(arg map_name).yaml"/>
+
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_path)" />
+  <include file="$(find oit_sigverse_ros)/launch/base.launch">
+    <arg name="teleop" value="none" />
+    <arg name="rviz_conf_file" value="navigation.rviz" />
+  </include>
+  <include file="$(find oit_sigverse_ros)/launch/amcl.launch" />
+  <include file="$(find oit_sigverse_ros)/launch/move_base.launch" />
+</launch>

@@ -1,0 +1,28 @@
+TrajectoryPlannerROS:
+  acc_lim_x: 0.8
+  acc_lim_y: 0.8
+  acc_lim_th: deg(90)
+  max_vel_trans: 0.4
+  min_vel_trans: 0.0
+  max_vel_x: 0.4
+  min_vel_x: -0.4
+  max_vel_y: 0.2
+  min_vel_y: -0.2
+  max_vel_theta: deg(60)
+  min_vel_theta: deg(-60)
+  theta_stopped_vel: 0.0
+  
+  yaw_goal_tolerance: deg(10)
+  xy_goal_tolerance: 0.15
+  latch_xy_goal_tolerance: true
+
+  sim_time: 3
+  sim_granularity: 0.2
+  vx_samples: 4
+  vy_samples: 4
+  vtheta_samples: 10
+
+  holonomic_robot: true
+  prune_plan: true
+  global_frame_id: map
+  

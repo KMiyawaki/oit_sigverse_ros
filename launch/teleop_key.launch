@@ -1,0 +1,7 @@
+<launch>
+  <arg name="rviz_conf_file" default="hsr.rviz" />
+  <include file="$(find oit_sigverse_ros)/launch/base.launch">
+    <arg name="teleop" value="key" />
+    <arg name="rviz_conf_file" value="$(arg rviz_conf_file)" />
+  </include>
+</launch>
